@@ -46,7 +46,7 @@
 | Column        | Type       | options                        |
 |---------------|------------|--------------------------------|
 | postcode      | string     | null: false                    |
-| prefecture_id | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block         | string     | null: false                    |
 | building      | string     |                                |
@@ -56,9 +56,7 @@
 
 ### Association
 
-- belongs_to :item
-- belongs_to :user
-- has_one :bid
+- belongs_to :bid
 
 ## bid テーブル
 　
@@ -66,8 +64,8 @@
 |---------------|------------|--------------------------------|
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
-| address       | references | null: false, foreign_key: true |
+
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address  
+- has_one :address
