@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } 
-  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } 
-  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
+  validates :first_name, presence: true, format: { with: NAME_REGEX  } 
+  validates :last_name, presence: true, format: { with: NAME_REGEX } 
+  NAME_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/.freeze
+  validates :first_name_kana, presence: true, format: { with: NAME_KANA_REGEX  }
+  validates :last_name_kana, presence: true, format: { with: NAME_KANA_REGEX }
   validates :birthday, presence: true
   validates :email, presence: true  
   validates :password, presence: true  

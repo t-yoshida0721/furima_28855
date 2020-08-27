@@ -80,11 +80,31 @@ describe User do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
 
+      it "メールアドレスに@がないと登録できないこと" do
+        @user.email = "aaaa1111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+        end
+
       it "passwordが5文字以下であれば登録できないこと" do
         @user.password = "12345"
         @user.password_confirmation = "12345"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      end
+
+      it "passwordが数値だけでは登録できないこと" do
+        @user.password = "123456"
+        @user.password_confirmation = "123456"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+      it "passwordが英字だけでは登録できないこと" do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
 
       it "last_name_kanaがカタカナでないと登録できないこと" do
