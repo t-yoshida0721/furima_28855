@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user! , except: [:index]
   def index  
   end
 
@@ -29,6 +30,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:picture, :product_name, :product_description, :product_category, :product_status, :burden, :area, :days, :selling_prise, :user)
   end
-
 
 end
