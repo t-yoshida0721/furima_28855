@@ -34,17 +34,18 @@ ActiveRecord::Schema.define(version: 2020_08_29_042030) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "picture", null: false
     t.string "product_name", null: false
     t.text "product_description", null: false
-    t.integer "product_category", null: false
-    t.integer "Product_status", null: false
-    t.integer "burden", null: false
-    t.integer "area", null: false
-    t.integer "days", null: false
+    t.integer "product_category_id", null: false
+    t.integer "Product_status_id", null: false
+    t.integer "burden_id", null: false
+    t.integer "area_id", null: false
+    t.integer "days_id", null: false
     t.integer "selling_prise", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,4 +67,5 @@ ActiveRecord::Schema.define(version: 2020_08_29_042030) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "users"
 end

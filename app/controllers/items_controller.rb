@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! , except: [:index]
   def index  
+    @items = Item.all
   end
 
   def new
@@ -8,7 +9,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(tweet_params)
+    @item = Item.new (item_params)
+    @item.save
+    redirect_to root_path
   end
 
   def destroy
@@ -28,7 +31,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:picture, :product_name, :product_description, :product_category, :product_status, :burden, :area, :days, :selling_prise, :user)
+    params.require(:item).permit( :image, :product_name, :product_description, :product_category_id, :Product_status_id, :burden_id, :area_id, :days_id, :selling_prise).merge(user_id: current_user.id)
   end
 
 end

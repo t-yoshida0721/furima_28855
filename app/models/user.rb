@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :items 
+      
   validates :nickname, presence: true
   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   validates :first_name, presence: true, format: { with: NAME_REGEX  } 
