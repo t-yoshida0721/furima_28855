@@ -70,8 +70,14 @@ describe '商品出品' do
       expect(@item.errors.full_messages).to include("Selling prise is not included in the list")
     end
     
-    it  "selling_priseが300~9999999の間でなければ登録できない" do
+    it  "selling_priseが300以下の場合は登録できない" do
       @item.selling_prise = "299"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Selling prise is not included in the list")
+    end
+
+    it  "selling_priseが10000000000以上の場合は登録できない" do
+      @item.selling_prise = "10000000000"
       @item.valid?
       expect(@item.errors.full_messages).to include("Selling prise is not included in the list")
     end
