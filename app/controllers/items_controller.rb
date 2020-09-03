@@ -31,7 +31,12 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item.update(item_params)
+    @item.update(item_params)
+    if @item.save
+    redirect_to item_path
+    else
+    render :edit
+    end
   end
 
   def show   
