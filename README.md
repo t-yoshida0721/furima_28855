@@ -41,7 +41,7 @@
 - belongs_to :user
 - has_one :bid
 
-## address テーブル
+## orders テーブル
 
 | Column        | Type       | options                        |
 |---------------|------------|--------------------------------|
