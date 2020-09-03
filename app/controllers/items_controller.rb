@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_user! , except: [:index]
 
   def index  
@@ -22,7 +22,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
     item.destroy
   end
 
@@ -31,7 +30,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
     item.update(item_params)
   end
 
