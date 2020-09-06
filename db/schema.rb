@@ -59,17 +59,13 @@ ActiveRecord::Schema.define(version: 2020_09_04_024808) do
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
-    t.integer "prefecture_id", null: false
+    t.integer "area_id", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
     t.string "phone_number", null: false
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_orders_on_item_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -94,6 +90,4 @@ ActiveRecord::Schema.define(version: 2020_09_04_024808) do
   add_foreign_key "bids", "items"
   add_foreign_key "bids", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "orders", "items"
-  add_foreign_key "orders", "users"
 end
