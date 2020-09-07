@@ -2,20 +2,21 @@ class OrdersController < ApplicationController
   before_action :move_to_signed_in
   before_action :move_to_index
   def index
-    @order = Order.new
+    @order = OrderBid.new
     @item = Item.find(params[:item_id])
   end
 
   def new
-    @order = Order.new
+    @order = OrderBid.new
    
   end
   def create
-    @order = Order.new(order_params)
-    if @order.save!
-     redirect_to root_path
+    @order = OrderBid.new(order_params)
+    if @order.valid?
+      @order.save
+        return redirect_to root_path
     else
-      redirect_to item_orders_path
+      render 'index'
     end
   end
 
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
   end
     
   def order_params
-    params.require(:order).permit( :postcode, :area_id, :city, :block, :building, :phone_number,).merge(user_id: current_user.id)
+    params.require(:order_bid).permit( :postcode, :area_id, :city, :block, :building, :phone_number, :bid_id).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end

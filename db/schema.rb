@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(version: 2020_09_04_024808) do
     t.string "block", null: false
     t.string "building"
     t.string "phone_number", null: false
+    t.bigint "bid_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bid_id"], name: "index_orders_on_bid_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,4 +92,5 @@ ActiveRecord::Schema.define(version: 2020_09_04_024808) do
   add_foreign_key "bids", "items"
   add_foreign_key "bids", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "bids"
 end
