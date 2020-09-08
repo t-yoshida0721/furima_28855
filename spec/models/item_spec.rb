@@ -34,7 +34,7 @@ describe '商品出品' do
       expect(@item.errors.full_messages).to include("Product category is not included in the list")
     end
 
-    it  "Product_status_idが空だと登録できない" do
+    it  "product_status_idが空だと登録できない" do
       @item.Product_status_id = "0"
       @item.valid?
       expect(@item.errors.full_messages).to include("Product status is not included in the list")

@@ -23,14 +23,7 @@ class BidsController < ApplicationController
     params.permit(:price, :token)
   end
 
-  def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(
-      amount: bid_params[:price],  
-      card: bid_params[:token],    
-      currency:'jpy'                 
-    )
-  end
+  
 
 end
 

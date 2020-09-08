@@ -5,7 +5,7 @@ FactoryBot.define do
     product_name            {"abe"}
     product_description     {"あああ"}
     product_category_id     {"1"}
-    Product_status_id       {"1"}
+    product_status_id       {"1"}
     burden_id               {"1"} 
     area_id                 {"1"}
     days_id                 {"1"}

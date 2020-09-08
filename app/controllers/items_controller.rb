@@ -39,7 +39,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  
+  # def show
+  #   @item = Item.new
+  # end
 
   private
 
