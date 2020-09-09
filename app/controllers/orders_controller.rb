@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
     end
   end
   
-
   private
 
   def move_to_signed_in
