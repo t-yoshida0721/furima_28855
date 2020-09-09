@@ -10,10 +10,17 @@ describe '商品購入' do
 
   context '商品購入がうまくいく時' do
 
-    it "建物以外の項目が存在すれば出品できる" do
+    it "建物以外の項目が存在すれば購入できる" do
+      @order_bid.building = ""
       expect(@order_bid).to be_valid
     end
+
+    it "建物が存在していても購入できる" do
+      expect(@order_bid).to be_valid
+    end
+
   end
+  
 
   context '商品購入がうまくいかないとき' do
 

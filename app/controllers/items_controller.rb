@@ -40,7 +40,9 @@ class ItemsController < ApplicationController
   end
 
   # def show
-  #   @item = Item.new
+  #    if @item.bid != nil
+  #     @Item = Bid.find (params[:id])
+  #    end
   # end
 
   private

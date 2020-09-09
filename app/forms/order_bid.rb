@@ -3,10 +3,7 @@ class OrderBid
   include ActiveModel::Model
       
       attr_accessor :postcode, :area_id, :city, :block, :building, :phone_number, :user_id, :item_id, :bid_id, :token
-      # validates :number,presence: true
-      # validates :exp_month,presence: true
-      # validates :exp_year, presence: true
-      # validates :cvc,presence: true
+      
       validates :token,presence: true
       validates :postcode, presence: true,format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
       validates :area_id, numericality: { other_than: 0, message: "can't be blank" }

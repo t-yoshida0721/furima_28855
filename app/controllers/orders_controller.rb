@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :move_to_index
   def index
     @order = OrderBid.new
-    @item = Item.find(params[:item_id])
+    
   end
 
   def new
