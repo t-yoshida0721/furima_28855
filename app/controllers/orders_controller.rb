@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
       render 'index'
     end
   end
+  
 
   private
 
@@ -28,6 +29,7 @@ class OrdersController < ApplicationController
       redirect_to new_user_session_path
     end
   end
+
 
   def move_to_index
       @item = Item.find(params[:item_id])
