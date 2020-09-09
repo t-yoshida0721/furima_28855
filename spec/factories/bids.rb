@@ -1,8 +1,5 @@
 FactoryBot.define do
-  factory :order do
-
-    
-
+  factory :bid do
     
   end
 end

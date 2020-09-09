@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :address
+- has_many :orders
 - has_many :bids
 
 ## items テーブル
@@ -68,4 +68,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :address
+- has_one :order
