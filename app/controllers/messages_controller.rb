@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     @item = Item.find(params[:item_id])
     @message = Message.create(message_params)
     if @message.save
-      redirect_to "/items/#{@message.item.id}" 
+      ActionCable.server.broadcast 'message_channel', content: @message, nickname: @message.user.nickname
+      # redirect_to "/items/#{@message.item.id}" 
      else
       render  'items/show'
       
