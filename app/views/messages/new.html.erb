@@ -82,7 +82,7 @@
 
   <div class="comment-box">
   <% if current_user %>
-    <%= form_with model: [@item, @message],  local: true do |f| %>
+    <%= form_with model: [@item, @message], local: true do |f| %>
      <%= render 'shared/error_messages', model: f.object %>
        <%= f.text_area :text,  size: "30x10"%>
       <p class="comment-warn">
@@ -107,7 +107,11 @@
         <% end %>
       <% end %>
     </div>
-  
+  <%# <div id='messages'>
+  <% @messages.reverse_each do |message| %>
+    <%# <p><%= message.text %></p> %>
+  <%# <% end %> %> %>
+<%# </div> %>
   
   <div class="links">
     <a href="#" class="change-item-btn">
@@ -121,3 +125,5 @@
 </div>
 
 <%= render "shared/footer" %>
+
+

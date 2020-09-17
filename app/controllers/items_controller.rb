@@ -39,11 +39,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def show
-  #    if @item.bid != nil
-  #     @Item = Bid.find (params[:id])
-  #    end
-  # end
+  def show
+    @message = Message.new
+    @messages = @item.messages.includes(:user)
+    
+     
+  end
 
   private
 
