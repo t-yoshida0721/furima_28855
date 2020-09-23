@@ -8,9 +8,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :bids
   has_many :messages
-
-
-
+  
   validates :nickname, presence: true
   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   validates :first_name, presence: true, format: { with: NAME_REGEX  } 
